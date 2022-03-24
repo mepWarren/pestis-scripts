@@ -8,7 +8,7 @@ iqtree.sh
 mauve.sh
 megacats.sh
 
-Custom file formating scripts:
+**Custom file formating scripts:**
 
 cdForRegions.py and cdRegions.py take the GFF files for your reference organisum and parses out coding regions. Output file names indicate if there are any indels in the coding regions. It also notes if the sequence doesn't start with ATG.
 
