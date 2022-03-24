@@ -3,14 +3,7 @@ Bash scripts used for comparison of bacteria
 
 **Bash Scripts:**
 
-createOneFile.sh: Concatinates multiple Fasta files
-beast.sh  
-iqtree.sh
-mauve.sh
-megacats.sh
-
-
-**Custom file formatting scripts:**
+createOneFile.sh: Concatinates multiple Fasta files, beast.sh, iqtree.sh, mauve.sh, megacats.sh
 
 **cdForRegions.py and cdRegions.py**: take the GFF files for your reference organism and parses out coding regions. Output file names indicate if there are any indels in the coding regions. It also notes if the sequence doesn't start with ATG.
 
