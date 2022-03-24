@@ -1,5 +1,5 @@
 # pestis-scripts
-Scripts used for comparison of bacteria 
+**Bash scripts used for comparison of bacteria **
 
 Bash Scripts:
 createOneFile.sh
