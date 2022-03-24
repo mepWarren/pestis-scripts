@@ -18,15 +18,6 @@ module load miniconda3
 source /fslgroup/fslg_PickettLabGroup/software/group-conda/bin/activate
 conda activate hyphy
 
-#Meme Analysis
-
 for file in input_fel_cdYP*; do
-	#echo "$file | hyphy"
 	cat $file | hyphy
 done
-
-
-
-
-
-#cat input_hyphy.txt | hyphy
