@@ -1,9 +1,7 @@
 # pestis-scripts
 Bash scripts used for comparison of bacteria
 
-**Bash Scripts:**
-
-createOneFile.sh: Concatinates multiple Fasta files, beast.sh, iqtree.sh, mauve.sh, megacats.sh, fel_HyPhy.sh, meme_HyPhy.sh
+**Bash Scripts:** createOneFile.sh: Concatinates multiple Fasta files, beast.sh, iqtree.sh, mauve.sh, megacats.sh, fel_HyPhy.sh, meme_HyPhy.sh
 
 **cdForRegions.py and cdRegions.py**: take the GFF files for your reference organism and parses out coding regions. Output file names indicate if there are any indels in the coding regions. It also notes if the sequence doesn't start with ATG.
 
