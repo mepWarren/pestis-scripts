@@ -4,8 +4,8 @@
 import sys, re
 
 
-numberOfFiles = 22
-fastaFileName = "nmIsolates.xmfa"
+numberOfFiles = 40
+fastaFileName = "combined1.fasta.xmfa"
 
 
 def main():
@@ -13,6 +13,7 @@ def main():
     divideUp()
     
 def divideUp(): #Parse out each homol chunk
+    print("Divide up")
     countOfNewFiles = 0
     headerInfo = ""
     seqInfo = ""
@@ -20,7 +21,7 @@ def divideUp(): #Parse out each homol chunk
         with open(fastaFileName, "r") as data: 
             for line in data:
                 if "#" in line: #Gets the header information
-                   headerInfo = headerInfo + line
+                    headerInfo = headerInfo + line
                 else:   #Sequence infomation
                     seqInfo = seqInfo + line
             parseTileInfo(headerInfo.strip())
@@ -34,12 +35,11 @@ def parseTileInfo(titleInfo): #gets the names of all the files to build
     filesBuild = 0  
     for line in titleInfo.splitlines():
         count += 1
-        if (count % 2 == 0) & (count < numberOfFiles * 2 + 2):  #Get names 
-            portion_of_line = re.split(' +', line)
-            sequenceInfo = line.split()
-            name = sequenceInfo[1]
-            buildFiles(name)
-            filesBuild += 1
+        portion_of_line = re.split(' +', line)
+        sequenceInfo = line.split()
+        name = sequenceInfo[1]
+        buildFiles(name)
+        filesBuild += 1
     if(filesBuild != numberOfFiles):
         print("Error message: you built the wrong number of files")
            
@@ -68,7 +68,9 @@ def parseHomolChunk(homochunk):
             if seq != "":
                 addToFile(name, seq)
                 seq = ""
-            name = line.split()[3:][0] 
+            tempName = line.split()[1:][0]#Cleans up the names of each 
+            namePart = tempName.partition(":")
+            name = namePart[0] 
         elif "=" in line:
                 lastLine = line [:-1]
                 seq = seq + lastLine
@@ -80,13 +82,12 @@ def parseHomolChunk(homochunk):
             
 
 def addToFile(name, seq): #Adds homol chunks to the specific file
-    tempFile = open(name, "a") #Open the right file
+    tempFile = open(name+".fasta", "a") #Open the right file
     readySeq = cleanUpSeq(seq)
     tempFile.write(readySeq)
     tempFile.close()
   
 def cleanUpSeq(seq): #Removes White space and end of line char
-
     seq = " ".join(seq.split()) 
     seq = seq.strip() 
     seq = seq.replace(" ","")
@@ -94,7 +95,7 @@ def cleanUpSeq(seq): #Removes White space and end of line char
 
 
 def buildFiles(fileName): #Builds new files 
-    newFile = open(fileName, "w")
+    newFile = open(fileName+".fasta", "w")
     newFile.write(">" + fileName + '\n')
     newFile.close()
 
